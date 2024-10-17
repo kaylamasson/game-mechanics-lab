@@ -7,12 +7,20 @@ public class MoveAsteroid : MonoBehaviour
 
     public int rotz; 
     public int mx, my; 
-    public Rigidbody2D  myRigid; 
+    private Rigidbody2D myRigid; 
+    private ParticleSystem myPart;
+    public float startTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        startTime = Time.timeSinceLevelLoad; 
+
         myRigid = this.GetComponent<Rigidbody2D>();
+
+        myPart = this.GetComponent<ParticleSystem>(); 
+
         myRigid.AddForce(Vector3.up * my);
         myRigid.AddForce(Vector3.right * mx);
         myRigid.AddTorque(rotz);   
@@ -23,6 +31,23 @@ public class MoveAsteroid : MonoBehaviour
     void Update()
     {
 
-      
     }
+
+    /*
+    void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (startTime + 1f < Time.timeSinceLevelLoad){
+                myPart.Play();
+            }
+        }
+
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (startTime + 1f < Time.timeSinceLevelLoad){
+            myPart.Stop();
+        }
+    }
+
+    */
 }

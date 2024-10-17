@@ -31,7 +31,6 @@ public class FireMissile : MonoBehaviour
     time += Time.deltaTime; 
 
     GameObject bullet;
-
     //if fire key pressed
     if (Input.GetKey(fire)){
         //one bullet can be fired per second 

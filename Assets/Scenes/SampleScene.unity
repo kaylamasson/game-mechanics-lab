@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &298268340
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 1953764791}
   - component: {fileID: 1953764793}
   - component: {fileID: 1953764792}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: spaceship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,8 +904,11 @@ MonoBehaviour:
   right: right
   up: up
   down: down
+  fire: space
+  bullet: {fileID: 6680673219598882980, guid: d8a400311d1268e44ac7af4dd226aae0, type: 3}
   myRigid: {fileID: 0}
   myPart: {fileID: 0}
+  lastFired: 0
 --- !u!61 &1953764792
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1111,7 +1114,7 @@ GameObject:
   - component: {fileID: 2139577096}
   - component: {fileID: 2139577098}
   - component: {fileID: 2139577097}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

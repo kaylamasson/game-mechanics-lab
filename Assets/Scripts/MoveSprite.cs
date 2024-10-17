@@ -10,9 +10,12 @@ public class MoveSprite : MonoBehaviour
     public string right; 
     public string up;
     public string down;
-    public Rigidbody2D myRigid; 
 
+    public string fire;
+    public GameObject bullet;
+    public Rigidbody2D myRigid; 
     public ParticleSystem myPart;
+    public float lastFired;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +27,20 @@ public class MoveSprite : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        GameObject tmpBullet;
+
+        if (Input.GetKey(fire)){
+            if (Time.time > lastFired + 1){
+                Debug.Log("Fired"); 
+                tmpBullet = Instantiate(bullet, this.transform.position + (this.transform.up), this.transform.rotation);
+                lastFired = Time.time;
+            }
+        }
+
        if(Input.GetKey(up)){
-        myRigid.AddForce(this.transform.up * 2);
-        myPart.Play();
+            myRigid.AddForce(this.transform.up * 1);
+            myPart.Play();
 
        } else {
             myPart.Stop(); 
@@ -34,7 +48,7 @@ public class MoveSprite : MonoBehaviour
        
 
        if (Input.GetKey(down)){
-        myRigid.AddForce(this.transform.up * -2);
+        myRigid.AddForce(this.transform.up * -1);
        }
 
         if (Input.GetKey(left)) {
@@ -43,6 +57,11 @@ public class MoveSprite : MonoBehaviour
 
         if (Input.GetKey(right)) {
             this.transform.Rotate(new Vector3(0f,0f,-100f) * Time.deltaTime);
+        }
+
+
+        if (Input.GetKey(fire)){
+            
         }
     }
 }
