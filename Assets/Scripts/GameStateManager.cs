@@ -6,17 +6,13 @@ public class GameStateManager : MonoBehaviour
 {
 
     public GameObject prefab; 
-
-    public GameObject spaceship; 
     public int howMany; 
+    private int score;
     public Vector3 pos; 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        Physics2D.IgnoreLayerCollision(6,7);
-
         GameObject tmpAsteroid; 
 
         //FireMissile fm;
@@ -45,5 +41,21 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public void setScore(int s)
+    {
+        score = s;
+    }
+
+    public void adjustScore(int s)
+    {
+        score += s; 
+        Debug.Log("Score: " + score);
     }
 }
