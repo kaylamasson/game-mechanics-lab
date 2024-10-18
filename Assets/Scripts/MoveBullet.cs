@@ -6,6 +6,8 @@ public class MoveBullet : MonoBehaviour
 {
    private Rigidbody2D myRigid; 
    public GameObject myPart;
+
+   public float particleDuration = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +26,11 @@ public class MoveBullet : MonoBehaviour
         GameObject part;
 
         if (collision.gameObject.tag == "Asteroid"){
+            particleDuration += Time.deltaTime; 
             part = Instantiate(myPart, this.transform.position, this.transform.rotation);
             Destroy(collision.gameObject);
+
+            
         }
 
         Destroy(this.gameObject);
