@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPart: {fileID: 4641496814893973332, guid: b4493980a6be36e4cbecc083e49c0963, type: 3}
+  missileSpeed: 10

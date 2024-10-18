@@ -6,7 +6,9 @@ public class MoveBullet : MonoBehaviour
 {
    private Rigidbody2D myRigid; 
    public GameObject myPart;
-   private GameStateManager gsm; 
+   private GameStateManager gsm;
+   public float missileSpeed;
+   private float timeFired = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,21 +21,36 @@ public class MoveBullet : MonoBehaviour
     void Update()
     {
 
-     myRigid.AddForce(this.transform.up * 50);
+    timeFired += Time.deltaTime; 
+
+    myRigid.AddForce(this.transform.up * missileSpeed);
+
+    if (timeFired > 2){
+        //destroy bullet after 2 secs if no collision occurs
+        Destroy(this.gameObject);
+    }
+
+
 
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+
         GameObject part;
 
         if (collision.gameObject.tag == "Asteroid")
         {
             part = Instantiate(myPart, this.transform.position, this.transform.rotation);
             gsm.adjustScore(1);
-            Destroy(collision.gameObject);   
+            Destroy(collision.gameObject);  
+            gsm.howMany -= 1;  
         }
 
         Destroy(this.gameObject);
+
+        if (gsm.howMany == 0){
+            Debug.Log("** You win! **");
+        }
     }
 }

@@ -43,6 +43,9 @@ public class GameStateManager : MonoBehaviour
         
     }
 
+
+    // Score system
+    
     public int getScore()
     {
         return score;
