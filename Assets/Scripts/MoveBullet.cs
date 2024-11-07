@@ -8,7 +8,7 @@ public class MoveBullet : MonoBehaviour
    public GameObject myPart;
    private GameStateManager gsm;
    public float missileSpeed;
-   private float timeFired = 0;
+   private float timeFired;
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +45,16 @@ public class MoveBullet : MonoBehaviour
             gsm.adjustScore(1);
             Destroy(collision.gameObject);  
             gsm.howMany -= 1;  
+
+            //for (int i=0; i<2; i++)
         }
 
+    //destroys bullet on collision
         Destroy(this.gameObject);
 
-        if (gsm.howMany == 0){
-            Debug.Log("** You win! **");
+        //player wins if player destroys all asteroids 
+        //if (gsm.howMany == 0){
+          //Debug.Log("** You win! **");
         }
     }
 }

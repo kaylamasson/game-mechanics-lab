@@ -33,6 +33,13 @@ public class GameStateManager : MonoBehaviour
             am.my = Random.Range(-8,8) * 10;
             am.rotz = Random.Range(-3,3);
 
+
+        DontDestroyOnLoad(this.gameObject); 
+
+        if (FindObjectsOfType(this.GetType()).Length > 1)
+        {
+            Destroy(this.gameObject); 
+        }
             
         }
     }
